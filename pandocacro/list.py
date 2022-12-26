@@ -72,6 +72,13 @@ def latex(elem: Union[panflute.Div, panflute.Header],
     if isinstance(elem, panflute.Header):
         options.append("name=" + panflute.stringify(elem))
 
+    if "heading" in elem.attributes:
+        heading = elem.attributes["heading"].lower()
+        if heading not in ("none", "section", "section*", "chapter", "chapter*"):
+            logger.warning(f"Unknown 'heading' option '{heading}'")
+        else:
+            options.append(f"heading={heading}")
+
     if "sort" in elem.attributes:
         sort = elem.attributes["sort"].lower()
         if sort not in ("true", "false"):
