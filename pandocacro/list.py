@@ -155,8 +155,9 @@ def plain(elem: Union[panflute.Div, panflute.Header],
 
     acrolist = [panflute.ListItem(
         panflute.Plain(
-            panflute.Strong(panflute.Str(acro["short"])),
-            panflute.Str(":"),
+            panflute.Str(acro["short"]),
+            panflute.Space,
+            panflute.Str("—"),
             panflute.Space,
             *panflute.convert_text(acro["long"])[0].content
             )
